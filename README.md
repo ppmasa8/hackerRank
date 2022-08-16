@@ -1,4 +1,4 @@
-# hackerRank
+# HackerRank
 
 - certificates
 
