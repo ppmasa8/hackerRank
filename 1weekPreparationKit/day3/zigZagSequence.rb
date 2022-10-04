@@ -2,32 +2,23 @@ t = gets.to_i
 n = gets.to_i
 arr = gets.split(" ").map(&:to_i)
 
-p arr
+mid = n / 2
+last = n - 1
 
-k = (n + 1)/2
-max = arr.max
-max_id = 0
-res = []
-rev = []
+max = arr[last]
+arr[last] = arr[mid]
+arr[mid] = max
 
-(0...n).each do |i|
-    if arr[i] == max
-        max_id = i
-    end
+left = mid + 1
+right = last - 1
+
+while left < right
+    tmp = arr[left]
+    arr[left] = arr[right]
+    arr[right] = tmp
+
+    left += 1
+    right -= 1
 end
 
-(0...n).each do |i|
-    if i < max_id
-        res << arr[i]
-    elsif i == max_id
-        res.sort!
-        res << max
-    else
-        rev << arr[i]
-    end
-end
-
-rev.reverse!
-res << rev
-res.flatten!
-return res
+puts arr.join(" ")
